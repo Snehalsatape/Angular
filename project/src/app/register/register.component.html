@@ -1,0 +1,33 @@
+<form [formGroup]="registrationForm" (ngSubmit)="handleSubmit()">
+  <h3>User Registration</h3>
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input formControlName="username" type="text" class="form-control"/>
+    <div *ngIf="registrationForm.controls['username'].dirty||registrationForm.controls['username'].touched ">    
+    <div
+      class="alert alert-danger"
+      *ngIf="registrationForm.controls['username'].errors?.['required']"
+    >
+      Username is required
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="registrationForm.controls['username'].errors?.['email']"
+    >
+      Enter a valid Email
+    </div>
+</div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input formControlName="password" type="text" class="form-control" />
+ <div>
+    <div></div>
+    <div></div>
+ </div>
+</div>
+  <div class="mb-3">
+    <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
+
